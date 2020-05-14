@@ -8,11 +8,5 @@ from django.views.generic.list import ListView
 # Create your views here.
 class MangaListView(ListView):
     """ Renders a list of all Pages. """
+    paginate_by = 75
     model = Manga
-
-    def get(self, request):
-        """ GET a list of Pages. """
-        manga = self.get_queryset().all()
-        return render(request, 'manga/index.html', {
-          'manga': manga
-        })
