@@ -47,7 +47,7 @@ class ReadlistView(ListView):
             Readlist.creator = request.user
             Readlist.save()
             form.save_m2m()
-            
+
             return HttpResponseRedirect(
                 reverse('user-readlist-page', args=[request.user.id]))
         # else if form is not valid

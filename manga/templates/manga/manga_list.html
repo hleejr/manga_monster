@@ -26,6 +26,7 @@
         <div class="card mb-3">
             <h5 class="card-header ">{{ comic.title }}</h5>
             <div class="card-body border-dark">
+                <img height="300" width="300" src="{{comic.img_link}}"/>
               <p class="card-text text-dark">
                 {{ comic.description|truncatewords_html:30 }}
                 <hr>

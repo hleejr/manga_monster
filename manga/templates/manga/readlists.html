@@ -26,16 +26,19 @@
     </form>
     <hr>
     {% for readlist in readlists %}
-        {{ readlist.name }}
-        <div class="card-columns">
+        <h4>{{ readlist.name }}</h4>
+        <div class="row flex-row flex-nowrap overflow-auto justify-content-between" >
             {% for manga in readlist.manga.all %}
-            <div class="card mb-3">
-                <h5 class="card-header ">{{ manga.title }}</h5>
-                <div class="card-body border-dark">
-                <p class="card-text text-dark">
-                    {{ manga.description }}
-                    <hr>
-                    <div class="text-right"><a href="{% url 'manga-details-page' manga.id %}" title="Read More">Read More</a></div>
+            <div class="col-4">
+                <div class="card">
+                    <h5 class="card-header ">{{ manga.title }}</h5>
+                    <div class="card-body border-dark">
+                        <img height="200" width="200" class="card-img-top" src="{{manga.img_link}}"/>
+                        <p class="card-text text-dark">
+                        {{ manga.description|truncatewords_html:30 }}
+                        <hr>
+                        <div class="text-right"><a href="{% url 'manga-details-page' manga.id %}" title="Read More">Read More</a></div>
+                    </div>
                 </div>
             </div>
             {% endfor %}

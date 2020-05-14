@@ -10,6 +10,7 @@ class Manga(models.Model):
     demographic = models.CharField(max_length=200)
     description = models.CharField(max_length=20000)
     link = models.CharField(max_length=200)
+    img_link = models.CharField(default='', max_length=200)
 
     def __str__(self):
         return self.title
