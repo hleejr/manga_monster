@@ -25,7 +25,7 @@ SECRET_KEY = 'au)lj_y7mce%6bx1)5op0p9nf^x8q)1n#g9z3syr&dk27bpf2p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'manga-monster.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'manga-monster.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
