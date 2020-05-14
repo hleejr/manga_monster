@@ -1,1 +1,1 @@
-web: gunicorn manga_monster.wsgi --log-file 
+web: gunicorn manga_monster.wsgi --log-file -
