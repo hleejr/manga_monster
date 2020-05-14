@@ -1,19 +1,45 @@
 {% extends "manga/base.html" %}
 
 {% block content %}
-{{ readlists.name }}
-<div class="card-columns">
-    {% for manga in readlists.manga.all %}
-    <div class="card mb-3">
-        <h5 class="card-header ">{{ manga.title }}</h5>
-        <div class="card-body border-dark">
-          <p class="card-text text-dark">
-            {{ manga.description }}
-            <hr>
-            <div class="text-right"><a href="{% url 'manga-details-page' manga.id %}" title="Read More">Read More</a></div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
 
+    <h3>Create a Readlist</h3>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <button type="submit">SUBMIT</button>
+    </form>
+    <hr>
+    {% for readlist in readlists %}
+        {{ readlist.name }}
+        <div class="card-columns">
+            {% for manga in readlist.manga.all %}
+            <div class="card mb-3">
+                <h5 class="card-header ">{{ manga.title }}</h5>
+                <div class="card-body border-dark">
+                <p class="card-text text-dark">
+                    {{ manga.description }}
+                    <hr>
+                    <div class="text-right"><a href="{% url 'manga-details-page' manga.id %}" title="Read More">Read More</a></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    {% endfor %}
 {% endblock %}
