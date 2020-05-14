@@ -25,7 +25,7 @@ SECRET_KEY = 'au)lj_y7mce%6bx1)5op0p9nf^x8q)1n#g9z3syr&dk27bpf2p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'manga-monster.herokuapp.com']
 
 
 # Application definition
@@ -122,3 +122,4 @@ USE_TZ = True
 STATIC_URL = 'manga/static/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
