@@ -1,14 +1,28 @@
 {% extends "manga/base.html" %}
 
 {% block content %}
+    <h3>Manga {% if manga %}<small class="text-muted">({{ manga|length }} Page{{ manga|length|pluralize:"s" }})</small>{% endif %}</h3>
+    <hr>
     {% if manga %}
-        <ul>
-        <!-- {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-        {% endfor %} -->
-        {{ manga }}
-        </ul>
+    <div class="card-columns">
+        {% for comic in manga %}
+        <div class="card mb-3">
+            <h5 class="card-header ">{{ comic.title }}</h5>
+            <div class="card-body border-dark">
+              <p class="card-text text-dark">
+                {{ comic.description|truncatewords_html:30 }}
+                <hr>
+                <div class="text-right"><a title="Read More">Read More</a></div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Written by <b>{{ comic.author}}</b></small>
+              <small class="text-muted">Artwork by <b>{{ comic.artist}}</b></small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     {% else %}
-        <p>No polls are available.</p>
+    <div class="alert alert-primary" role="alert">No manga to display.</div>
     {% endif %}
+    
 {% endblock %}
