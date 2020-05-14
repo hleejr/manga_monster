@@ -1,0 +1,19 @@
+{% extends "manga/base.html" %}
+
+{% block content %}
+{{ readlists.name }}
+<div class="card-columns">
+    {% for manga in readlists.manga.all %}
+    <div class="card mb-3">
+        <h5 class="card-header ">{{ manga.title }}</h5>
+        <div class="card-body border-dark">
+          <p class="card-text text-dark">
+            {{ manga.description }}
+            <hr>
+            <div class="text-right"><a href="{% url 'manga-details-page' manga.id %}" title="Read More">Read More</a></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

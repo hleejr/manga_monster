@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Manga(models.Model):
@@ -13,3 +13,16 @@ class Manga(models.Model):
 
     def __str__(self):
         return self.title
+
+class Readlist(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.PROTECT)
+    name = models.CharField(max_length=200)
+    manga = models.ManyToManyField(Manga, through='ReadlistManga')
+
+    def __str__(self):
+        return self.name
+
+class ReadlistManga(models.Model):
+    manga = models.ForeignKey(Manga, on_delete=models.PROTECT)
+    readlist = models.ForeignKey(Readlist, on_delete=models.PROTECT)
+    

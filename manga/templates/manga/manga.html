@@ -1,0 +1,18 @@
+{% extends "manga/base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col m-4">
+      <h3>{{ manga.title }} <small class="text-muted"> by <b>{{ manga.author }}</b></small></h3>
+      <h4>{{ manga.artist }}</h4>
+      <hr>
+      <h4>{{ manga.demographic }}</h4>
+      <h4>{{ manga.genre }}</h4>
+      <p>{{ manga.description|linebreaksbr }}</p>
+      <hr>
+      <h4>Read {{ manga.title }} <a href='{{ manga.link }}'>Here</a></h4>
+      <a href="/">Back to List</a>
+    </div>
+  </div>
+
+{% endblock %}
